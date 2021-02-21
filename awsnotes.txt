@@ -1,0 +1,296 @@
+EC2 elastic compute cloud
+virtual machine
+complete control
+pay only for what you use
+not wasted capacity
+minutes-not month
+
+
+EC2 Pricing options
+on demand most flexible
+reserved 1 or 3 years regional level predictable uses
+(standard RSs  - convertible RIS - SCHEDULED RIS)
+
+spot up to 90% discount
+Dedicated a phisical server dedicated for you(REGULATORY COMPLIANCE-LICENCING ON DEMAND- RESERVED)
+
+
+SAVING PLANS
+
+UP TO 72% 1 to 3 years include lambda and fargate
+
+
+
+EC2 INSTANCE TYPES
+
+1-Hardware
+
+2-Capabilities(cpu memory etc)
+
+3-Appl reqrements
+
+ssh -i {key location} ec2-user@{public dns}  (connect to ec2 instance)
+
+sudo su (root access)
+
+
+EBS VOLUMES
+
+elastic block store
+
+you can attach to ec2
+
+Mission critical workloads
+
+automaticly replicated
+
+scalable
+
+GENERAL PURPUSE SSD(GP2)
+3iops up to 16000
+
+Provisioned IOPS SSD (IO1) mOST EXPENSIVE
+
+up to 64,000
+
+PROVISIONED IOPS SSD (IO2) LATES GENERATION SAME PRICE AS IO1
+
+THROUGHPUT OPTIMIZED HDD (ST1) LOW COST HDD VOLUME
+
+
+COLD HDD(SC1)
+
+Lowest Cost Option
+
+These last 2 cannot be a boot volume
+
+ELASTIC LOAD BALANCERS
+
+Types of elb
+
+Application lb(load balancing of HTTP and HTTPS traffic- Layer 7)
+Network lb(TCP traffic where extreme performance is required-Layer4)
+Classic lb(legacy Layer 7 and Layer 4)
+
+504 Error means the gateway has timed out.
+
+Route53 
+
+Amazon DNS service - Domain Names
+
+aws s3api create-bucket --bucket my-bucke (create bucket from cli)
+
+OLTP(oNLINE TRANSACTION PROCESSING) VS OLAP(online analytics processin
+
+ELASTICACHE
+
+web service that makes it easy to deploy, operate, and scale an in memory cache in the cloud.
+Memcached - Redis
+
+RDS
+can not use Aurora on free tier
+
+dbexample
+
+SIMPLE STORAGE SERVICE S3
+A simple key:value store
+You can read PUTS os new objects inmediately
+but if you modified or delete an object it takes some time to propagate
+99.99% availability
+99.0 % Guarantee
+
+11 * 9s durability guarantee
+
+S3 STORAGE CLASSES
+
+s3 Standar
+s3-IA
+s3 OneZone - IA 
+s3- Intelligent Tiering
+s3 Glacier
+s3 Glaciar Deep Archive
+
+0 Bytes ti 5 TB
+
+S3 SECURITY
+By default they are private
+Bucket Policies(Bucket level)
+ACL(object level)
+
+write-once-read-many(WORM)
+
+
+S3 ENCRYPTION
+in transit (SSL/TLS)HTTPS
+AT REST
+SERVER SIDE ====> SSE-S3(AES256)  SSE-KMS(ames:kms) SSE-C
+CLIENT SIDE ENCRYPTION
+
+
+SERVERLESS
+
+Lambda
+Priced on number of requests
+first 1 million requests are free $0.20 after
+Priced also on duration
+
+No servers!
+Continuous Scaling
+super cheap
+scales out - not up
+a compute service
+Use AWS X-ray to debug lambda
+
+API Gateway
+Makes working with api easier
+Exposes HTTPS endpoints to define a RESTfull API
+connect to Lambda, DynamoDB, etc.
+Versioning
+Api Caching
+Same Origin Policy
+CORS apply
+
+Version Control With Lambda
+$LATEST
+You can use alias
+
+Step Functions(test and visualization of your applications)
+
+DynamoDB
+
+Fully managed NoSQL database
+Stored on SSD
+ 3 GEO
+
+Eventually Consistent Reads within a second
+
+Strongly Consistent Reads
+
+Primary key
+Partition Key
+Composite Key(Partition key + Sort Key)
+
+Query Api
+ProjectionExpression for especific attributesa
+ascending order
+eventual consistent by default need to specify for strong persistent
+
+Scan
+It looks through the entire table
+
+Query is more efficient that scan
+Try to avoid scan operations
+
+Provisioned Throughtput is measured in capacity units
+
+1 x Write Capacity Unit = 1 * 1kb
+
+1 x Read Capacity Unit = 1 * 4kb strongly Consistent and double for eventually Consistent
+
+DynamoDB Accelerator(DAX)
+In memory cache for DynamoDB
+10x performance ONLY FOR READ
+Eventulally consistent reads only
+
+
+ELASTICACHE
+In memory cache in the cloud sits between app and database
+For read heavy
+
+DynamoDB transactions
+
+ACID Transactions
+
+DynamoDB TTL
+
+expiration time for your data
+Reduce cost removing data you don't need automaticly
+
+DynamoDB Streams(recorder- can work with lambda - stored for 24h only)
+
+	
+KMS(AWS Key Management Service)
+Managed, integrated and simple
+
+Sensitive information
+CMK(Customer Master key, encrypt decrypt up to 4kb)
+
+SQS
+
+A message queue service
+Messaging between app components
+Visibility Timeout
+Decouple app components
+256KB
+Up to 14 days
+
+default 4 days
+Pull based- not push based
+
+Standard Queues
+Unlimited transactions
+Best effort Ordering
+Occasional duplicates
+
+FIFO
+300 TPS
+Guaranteed Ordering
+No duplication
+
+SQS Settings
+Short Polling vs Long Polling
+
+SNS- Simple Notification Service
+Push Notifications
+SMS and Email
+Lambda
+push based delivery
+simple
+flexible
+inexpensive pay as you go
+Managed service
+
+SNS vS SES(email service- email marketing)
+
+Kinesis
+Streaming Data - shards
+
+
+CI/CD
+
+CodeCommit(Source and version control)
+CodeBuild(compile,test, and produce)
+CodeDeploy(Automated deployment)
+1-In place
+2-Blue/ Green
+
+CodePipeline(Managed the workflow)
+
+
+CodeDeploy Lifecycle Event Hooks
+3 phases
+
+BeforeBlockTraffic
+
+BlockTraffic
+
+AfterBlockTraffic
+
+
+ApplicationStop
+
+DownloadBundle
+
+BeforeInstall
+
+Install
+
+AfterInstall
+
+ApplicationStart
+
+ValidateService
+
+
+
+
